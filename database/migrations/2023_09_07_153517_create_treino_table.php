@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('treinos', function (Blueprint $table) {
             $table->id();
-       //     $table->integer('aluno_id');
             $table->string('titulo');
             $table->text('descricao');
             $table->string('serie');
@@ -24,8 +23,17 @@ return new class extends Migration
             $table->date('data_inicio');
             $table->date('data_fim');
             $table->timestamps();
+            $table->unsignedBigInteger('instrutores_id');
+            $table->foreign('instrutores_id')->references('id')->on('instrutores');
+                     
+            $table->unsignedBigInteger('gurpo_musculares_id');
+            $table->foreign('gurpo_musculares_id')->references('id')->on('grupos_musculares');
+
             $table->unsignedBigInteger('aluno_id');
             $table->foreign('aluno_id')->references('id')->on('alunos');
+
+          
+         
         });
     }
 
