@@ -13,19 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('alunos', function (Blueprint $table) {
+        Schema::create('grupos_musculares', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->string('sobrenome');
-            $table->integer('cpf');
-            $table->integer('rg');
-            $table->string('email');
-            $table->string('celular');
-            $table->string('genero');
-            $table->string('profissao');
-            $table->string('observacao');
-            $table->date('data_nascimento');
-            
+            $table->text('descricao')->nullable();
             $table->timestamps();
         });
     }
@@ -37,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alunos');
+        Schema::dropIfExists('grupos_musculares');
     }
 };
