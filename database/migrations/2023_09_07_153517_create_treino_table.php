@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('titulo');
             $table->text('descricao');
+            $table->text('duracao');
             $table->string('serie');
             $table->string('repeticoes');
             $table->string('carga');
@@ -25,15 +26,15 @@ return new class extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('instrutores_id');
             $table->foreign('instrutores_id')->references('id')->on('instrutores');
-                     
+
             $table->unsignedBigInteger('gurpo_musculares_id');
             $table->foreign('gurpo_musculares_id')->references('id')->on('grupos_musculares');
 
             $table->unsignedBigInteger('aluno_id');
             $table->foreign('aluno_id')->references('id')->on('alunos');
 
-          
-         
+
+
         });
     }
 
