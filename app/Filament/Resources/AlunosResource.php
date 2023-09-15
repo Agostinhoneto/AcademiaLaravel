@@ -23,7 +23,28 @@ class AlunosResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('nome')
+                    ->required()
+                    ->disabledOn('edit'),
+                Forms\Components\TextInput::make('sobrenome')
+                    ->required(),
+                Forms\Components\TextInput::make('cpf')
+                    ->required(),
+                Forms\Components\TextInput::make('rg')
+                    ->required(),
+                Forms\Components\TextInput::make('email')
+                    ->required()
+                    ->unique(Alunos::class, 'email'),
+                Forms\Components\TextInput::make('celular')
+                    ->required(),
+                Forms\Components\TextInput::make('genero')
+                    ->required(),
+                Forms\Components\TextInput::make('profissão')
+                    ->required(),
+                Forms\Components\TextInput::make('Data de Nascimento')
+                    ->required(),
+                Forms\Components\RichEditor::make('Observação')
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -43,14 +64,14 @@ class AlunosResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -58,5 +79,5 @@ class AlunosResource extends Resource
             'create' => Pages\CreateAlunos::route('/create'),
             'edit' => Pages\EditAlunos::route('/{record}/edit'),
         ];
-    }    
+    }
 }

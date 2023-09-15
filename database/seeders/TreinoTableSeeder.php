@@ -17,7 +17,7 @@ class TreinoTableSeeder extends Seeder
         DB::table('treinos')->insert([
             'titulo' => 'teste',
             'descricao' => 'teste123',
-            'duracao' => 30, // Duração em minutos
+            'duracao' => 30,
             'serie' => 4,
             'repeticoes' => 12,
             'carga' => 10,
