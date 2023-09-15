@@ -27,8 +27,8 @@ return new class extends Migration
             $table->unsignedBigInteger('instrutores_id');
             $table->foreign('instrutores_id')->references('id')->on('instrutores');
 
-            $table->unsignedBigInteger('gurpo_musculares_id');
-            $table->foreign('gurpo_musculares_id')->references('id')->on('grupos_musculares');
+            $table->unsignedBigInteger('grupo_musculares_id');
+            $table->foreign('grupo_musculares_id')->references('id')->on('grupos_musculares');
 
             $table->unsignedBigInteger('aluno_id');
             $table->foreign('aluno_id')->references('id')->on('alunos');
