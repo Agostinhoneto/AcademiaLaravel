@@ -3,15 +3,12 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TreinosResource\Pages;
-use App\Filament\Resources\TreinosResource\RelationManagers;
 use App\Models\Treinos;
-use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms;
 
 class TreinosResource extends Resource
 {
@@ -21,9 +18,35 @@ class TreinosResource extends Resource
 
     public static function form(Form $form): Form
     {
+
+
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('título')
+                    ->required()
+                    ->disabledOn('edit'),
+                Forms\Components\TextInput::make('descricao')
+                    ->required(),
+                Forms\Components\TextInput::make('duracao')
+                    ->required(),
+                Forms\Components\TextInput::make('serie')
+                    ->required(),
+                Forms\Components\TextInput::make('repeticoes')
+                    ->required(),
+                Forms\Components\TextInput::make('carga')
+                    ->required(),
+                Forms\Components\DatePicker::make('Data de Inicio')
+                    ->required(),
+                Forms\Components\DatePicker::make('Data Final')
+                    ->required(),
+                Forms\Components\RichEditor::make('Observação')
+                    ->columnSpanFull(),
+                Forms\Components\TextInput::make('Instrutor')
+                    ->required(),
+                Forms\Components\TextInput::make('Grupo Muscular')
+                    ->required(),
+                Forms\Components\TextInput::make('Aluno')
+                    ->required(),
             ]);
     }
 
@@ -31,26 +54,58 @@ class TreinosResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('titulo')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('descricao')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('duracao')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('serie')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('repeticoes')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('carga')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('data_inicio')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('data_fim')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('instrutores_id')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('grupo_musculares_id')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('aluno_id')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
             ]);
+        Action::make('edit')
+            ->url(fn (Alunos $record): string => route('alunos.edit', $record))
+            ->openUrlInNewTab();
+        Action::make('delete')
+            ->requiresConfirmation()
+            ->action(fn (Alunos $record) => $record->delete());
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -58,5 +113,5 @@ class TreinosResource extends Resource
             'create' => Pages\CreateTreinos::route('/create'),
             'edit' => Pages\EditTreinos::route('/{record}/edit'),
         ];
-    }    
+    }
 }
