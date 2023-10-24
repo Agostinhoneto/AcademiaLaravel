@@ -9,6 +9,7 @@ use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Forms;
+use Filament\Forms\Components\TextInput;
 
 class TreinosResource extends Resource
 {
@@ -21,6 +22,7 @@ class TreinosResource extends Resource
 
 
         return $form
+            ->schema([Treinos::make()
             ->schema([
                 Forms\Components\TextInput::make('título')
                     ->required()
@@ -45,9 +47,11 @@ class TreinosResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('Grupo Muscular')
                     ->required(),
-                Forms\Components\TextInput::make('Aluno')
-                    ->required(),
-            ]);
+                Forms\Components\Select::make('aluno_id')
+                    ->relationship('alunos', 'nome'),
+                    TextInput::make('nome')->required(),
+            ])
+        ]);
     }
 
     public static function table(Table $table): Table
