@@ -23,6 +23,7 @@ class Treinos extends Model
         'instrutores_id',
         'grupo_musculares_id',
         'aluno_id',
+
     ];
 
     public function alunos(): BelongsTo
