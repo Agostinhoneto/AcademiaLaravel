@@ -13,7 +13,8 @@ class InstrutoresController extends Controller
      */
     public function index()
     {
-        //
+        $instrutores = Instrutor::all();
+        return response()->json($instrutores);
     }
 
     /**
@@ -35,7 +36,13 @@ class InstrutoresController extends Controller
      */
     public function show($id)
     {
-        //
+        $instrutor = Instrutor::find($id);
+
+        if (!$instrutor) {
+            return response()->json(['error' => 'Instrutor não encontrado'], 404);
+        }
+
+        return response()->json($instrutor);
     }
 
     /**

@@ -36,14 +36,10 @@ Route::controller(TreinosController::class)->group(function () {
 
 
 Route::controller(InstrutoresController::class)->group(function () {
-    Route::post('logout', 'logout')->name('auth_logout');
-    Route::post('refresh', 'refresh')->name('refresh');
-    Route::post('register', 'register')->middleware('AdminMiddleware');
-    Route::get('get_user', 'get_user')->name('refresh');
-    Route::get('index','index')->name('index.auth');
-    Route::get('show/{id}','show')->name('show.auth');
-    Route::put('update/{id}','update')->name('update.auth');
-    Route::delete('destroy/{id}','destroy')->name('destroy.auth');
+    Route::get('/instrutores', [InstrutoresController::class, 'index']);
+    Route::get('/instrutores/show/{id}', [InstrutoresController::class, 'show']);
+    Route::put('/instrutores/update/{id}', [InstrutoresController::class, 'show']);
+    Route::delete('/instrutores/destroy/{id}','destroy')->name('destroy.auth');
 });
 
 

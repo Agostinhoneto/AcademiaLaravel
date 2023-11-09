@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Instrutores;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,10 @@ class InstrutoresTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Instrutores::create([
+            'nome' => 'Nome do Instrutor',
+            'especializacao' => 'Especialidade do Instrutor',
+            'data_nascimento' => '1990-01-01',
+        ]);
     }
 }
