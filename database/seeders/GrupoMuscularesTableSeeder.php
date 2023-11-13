@@ -14,6 +14,9 @@ class GrupoMuscularesTableSeeder extends Seeder
      */
     public function run()
     {
+
+
+
         //
     }
 }
