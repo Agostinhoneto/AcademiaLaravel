@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('grupos_musculares', function (Blueprint $table) {
+        Schema::create('grupo_musculares', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
             $table->text('descricao')->nullable();
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('grupos_musculares');
+        Schema::dropIfExists('grupo_musculares');
     }
 };

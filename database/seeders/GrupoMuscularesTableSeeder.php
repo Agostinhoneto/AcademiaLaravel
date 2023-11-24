@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\GrupoMusculares;
 use Illuminate\Database\Seeder;
 
 class GrupoMuscularesTableSeeder extends Seeder
@@ -15,8 +15,12 @@ class GrupoMuscularesTableSeeder extends Seeder
     public function run()
     {
 
-
-
-        //
+        GrupoMusculares::create([
+            'id' => 1,
+            'nome' => 'Peito',
+            'descricao' => 'Superior',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 }
