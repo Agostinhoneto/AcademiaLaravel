@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('instrutores', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->date('data_nascimento');
             $table->string('especializacao');
             $table->timestamps();
         });

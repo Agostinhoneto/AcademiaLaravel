@@ -18,7 +18,6 @@ class InstrutoresTableSeeder extends Seeder
         Instrutores::create([
             'nome' => 'Nome do Instrutor',
             'especializacao' => 'Especialidade do Instrutor',
-            'data_nascimento' => '1990-01-01',
         ]);
     }
 }
