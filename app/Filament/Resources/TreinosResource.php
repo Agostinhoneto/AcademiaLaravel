@@ -3,12 +3,14 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TreinosResource\Pages;
+use App\Models\Alunos;
 use App\Models\Treinos;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Forms;
+use Filament\Forms\Components\Actions\Modal\Actions\Action;
 use Filament\Forms\Components\TextInput;
 
 class TreinosResource extends Resource
@@ -20,11 +22,9 @@ class TreinosResource extends Resource
     public static function form(Form $form): Form
     {
 
-
         return $form
-            ->schema([Treinos::make()
             ->schema([
-                Forms\Components\TextInput::make('título')
+                Forms\Components\TextInput::make('titulo')
                     ->required()
                     ->disabledOn('edit'),
                 Forms\Components\TextInput::make('descricao')
@@ -37,21 +37,17 @@ class TreinosResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('carga')
                     ->required(),
-                Forms\Components\DatePicker::make('Data de Inicio')
+                Forms\Components\DatePicker::make('data_inicio')
                     ->required(),
-                Forms\Components\DatePicker::make('Data Final')
+                Forms\Components\DatePicker::make('data_fim')
                     ->required(),
-                Forms\Components\RichEditor::make('Observação')
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('Instrutor')
+                Forms\Components\TextInput::make('instrutores_id')
                     ->required(),
-                Forms\Components\TextInput::make('Grupo Muscular')
+                Forms\Components\TextInput::make('grupo_musculares_id')
                     ->required(),
-                Forms\Components\Select::make('aluno_id')
-                    ->relationship('alunos', 'nome'),
-                    TextInput::make('nome')->required(),
-            ])
-        ]);
+                Forms\Components\TextInput::make('aluno_id')
+                    ->required(),
+            ]);
     }
 
     public static function table(Table $table): Table
